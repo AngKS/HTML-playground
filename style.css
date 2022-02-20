@@ -1,0 +1,40 @@
+.parent {
+    width: 400px;
+    height: 400px;
+    background-color: grey;
+    position: relative;
+}
+
+.child {
+    width: 400px;
+    height: 400px;
+    background-color: red;
+    position: absolute;
+}
+
+.child1 {
+    width: 400px;
+    height: 400px;
+    background-color: blue;
+    position: absolute;
+}
+
+.parent:hover .child, .child1 {
+    animation: to-center 1s ease-in-out alternate;
+}
+
+.parent:hover::after {
+    content: data-name;
+}
+
+@keyframes to-center {
+    0% {
+        top: 0;
+        left: 0;
+    }
+    100% {
+        top: 100%;
+        left: 0%;
+        /* transform: translate(-100%); */
+    }
+}

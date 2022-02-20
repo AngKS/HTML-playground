@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Grid Container</title>
+</head>
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 0.8em;
+
+
+    }
+
+    .grid-items:first-of-type {
+        grid-column: 1/3;
+        grid-row: 1 / 3;
+    }
+
+    .grid-items:last-of-type {
+        grid-column: 1 /3;
+        grid-row: 3/ 3;
+    }
+
+    .grid-items {
+        background-color: #313131;
+        color: white;
+        min-width: 100px;
+        min-height: 100px;
+        grid-column: 3/3;
+        grid-row: 1 / 4;
+
+    }
+</style>
+
+<body>
+    <div class="grid-container bg-grey">
+        <div class="grid-items">hello</div>
+        <div class="grid-items">bye</div>
+        <div class="grid-items">sike</div>
+    </div>
+</body>
+
+</html>

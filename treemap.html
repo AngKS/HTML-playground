@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- <script src="plotly.min.js"></script> -->
+    <title>Document</title>
+</head>
+
+
+
+<body>
+    <div id="tester" style="width:50%;height:auto"></div>
+    <!-- Create a div where the graph will take place -->
+    <div id="my_dataviz"></div>
+</body>
+<script>
+    TESTER = document.getElementById('tester');
+    data = [{
+        type: "treemap",
+        labels: ['Weapons', 'Melee', 'Range', 'Handgun', 'Shotgun', 'Baseball bat', 'Knife', 'Hammer', 'Axe', 'Sword', 'Rifle'],
+        values: [0, 0, 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,],
+        parents: ['', 'Weapons', 'Weapons', 'Range', 'Range', 'Melee', 'Melee', 'Melee', 'Melee', 'Melee', 'Range'],
+    }]
+    // data = [{
+    //     type: "treemap",
+    //     labels: [
+    //         { name: "Handgun", value: 2 },
+    //         { name: "Baseball Bat", value: 2 },
+    //         { name: "Rifle", value: 2 },
+    //     ],
+    //     parents: ["Total", "Total", "Total"],
+    // }]
+
+    Plotly.newPlot(TESTER, data)
+</script>
+
+</html>
