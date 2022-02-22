@@ -1,7 +1,10 @@
 import './App.css';
 import { React, useState, useEffect } from 'react';
+import Block from './components/Block'
 
 function App() {
+
+  const [Blocks, setBlocks] = useState([]);
 
   let initialBlock = {
     id: 0,
@@ -11,98 +14,30 @@ function App() {
     children: []
   }
 
-  const [Blocks, setBlocks] = useState([initialBlock]);
-  const [HTML, setHTML] = useState('');
-  const [currBlock, setCurrBlock] = useState(Blocks[-1]);
-  const [blockContent, setBlockContent] = useState('')
+  let renderBlocks = () => {
+    // check if there are any blocks
+    if (Blocks.length > 0) {
+      return Blocks.map((block, index) => {
+        return <Block id={block.id} type={block.type} tag={block.tag} content={block.content} children={block.children} />
 
-  let updateBlock = (id, content = null, type = null, tag = null) => {
-
-    // find block by id
-    let block = Blocks.find(block => block.id === id)
-    // update content of block
-    block.content = content
-    // update type of block
-    block.type = type
-    // update tag of block
-    block.tag = tag
-    // update HTML
-    return
+      })
+    } else {
+      return <Block id={initialBlock.id} type={initialBlock.type} tag={initialBlock.tag} content={initialBlock.content} children={initialBlock.children} />
+    }
   }
-
-  let renderBlocks = (blocks) => {
-
-    let html = HTML
-
-    // check if blocks is empty
-    if (blocks.length === 0) {
-      // add initial block
-      blocks.push(initialBlock)
-    }
-    blocks.map((block, index) => {
-      // check if block is a paragraph
-      if (block.tag === 'paragraph') {
-        // add paragraph to html
-        html += `<${block.tag}>${block.content}</${block.tag}>`
-      }
-      else if (block.tag === 'input') {
-        // add input to html
-        html += `<${block.tag} placeholder="${block.content}" type="${block.type}" id="${block.id}" value=""></${block.tag}>`
-      }
-
-      // check if block has children
-      if (block.children.length > 0) {
-        // add children to html
-        html += renderBlocks(block.children)
-      }
-
-    }
-    )
-
-    // add html to div with id 'Blocks'
-    document.getElementById('Blocks').innerHTML = html
-    // shift focus to last item of the array
-    document.getElementById(blocks[blocks.length - 1].id).focus()
-    setCurrBlock(blocks[blocks.length - 1])
-  }
-
-  // check for keyboard input
-  document.onkeydown = function (e) {
-    // check if key is enter
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      // add new block
-      setBlocks([...Blocks, {
-        id: Blocks.length,
-        type: 'search',
-        tag: 'input',
-        content: '',
-        children: []
-      }])
-    }
-    // if key is backspace and block is empty
-    console.log(currBlock.content);
-    if (e.key === 'Backspace' && currBlock.content === '') {
-      console.log(currBlock.content)
-      console.log('backspace')
-      // remove block
-      setBlocks(Blocks.slice(0, Blocks.length - 1))
-    }
-
-  }
-
 
   useEffect(() => {
-    renderBlocks(Blocks)
+    //  render blocks on load
+    renderBlocks()
+  }, [])
 
-  }, [Blocks])
 
 
   return (
     <div className="App container text-center">
       <h1>Block Editor</h1>
       <div className="" id="Blocks"></div>
-      
+
     </div>
   );
 }
