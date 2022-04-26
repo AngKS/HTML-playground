@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tag Search</title>
+</head>
+
+<style>
+    body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wrapper {
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        border: 0.8px solid black;
+        width: 100%;
+        padding: 1px 2px;
+    }
+
+    .searchField:focus {
+        outline: none;
+        padding: 0;
+    }
+
+    .searchField {
+        height: 100%;
+        padding: 0.5rem;
+        border: none;
+        margin-left: 0.25rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        background: #f5f5f5;
+    }
+
+
+    .tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    #ml-05 {
+        margin-left: 0.5rem;
+        padding: 0.3rem;
+    }
+
+    #ml-05:hover {
+        cursor: pointer;
+        padding: 0.3rem;
+        border-radius: 50%;
+        color: white;
+        background: #9a9a9a;
+    }
+</style>
+
+<script>
+
+    function addTag() {
+        // get input of searchField
+        var searchField = document.getElementById("searchField");
+        searchField.onchange = function() {
+            let searchFieldValue = searchField.value;
+        }
+
+        if (serachField.onkeydown === 'Space'){
+            var newTag = document.createElement("li");
+            newTag.className = "tag";
+            newTag.innerHTML = `
+                <span class="text-black-50">${searchFieldValue}</span>
+                    <i id="ml-05" class="fa fa-close"></i>
+            `;
+            // add new tag to tags-list
+            var tagsList = document.getElementById("tags-list");
+            tagsList.appendChild(newTag);
+            // clear searchField
+            searchField.value = "";
+        }
+        
+    }
+
+
+</script>
+
+<body>
+
+    <section class="container text-center p-2 rounded-2 shadow-lg">
+
+        <div class="wrapper">
+            <ul class="tags-list ">
+
+            </ul>
+            <input class="searchField" type="search" placeholder="Search for Tags..." name="" id="">
+
+        </div>
+
+
+    </section>
+
+</body>
+
+</html>

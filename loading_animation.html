@@ -1,0 +1,91 @@
+<html>
+
+<style>
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: #1d2433;
+}
+
+
+.span-container {
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+span {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  animation: speed 2s infinite ease-in-out;
+
+}
+
+.one{
+  background: #ffae57;
+  animation-delay: 1.5s;
+}
+
+
+.two{
+  background: #ef6b73;
+  animation-delay: 1s;
+}
+.three{
+  background: #5ccfe6;
+  animation-delay: 0.5s;
+}
+.four{
+  background: #bae67e;
+}
+
+@keyframes speed {
+
+  0% {
+    transform: translate(0%);
+    border-radius: 50%;
+  }
+
+  25%{
+    transform: translate(150%) scale(0.5);
+    border-radius: 0%;
+  }
+
+  50%{
+    transform: translate(150%, 150%);
+    border-radius: 50%;
+  }
+
+  75% {
+    transform: translate(0, 150%) scale(0.5);
+    border-radius: 0%;
+  }
+
+}
+</style>
+
+<body>
+  <div class="container">
+    <div class="span-container">
+      <span class="one"></span>
+      <span class="two"></span>
+      <span class="three"></span>
+      <span class="four"></span>
+    </div>
+  </div>
+</body>
+
+</html>
